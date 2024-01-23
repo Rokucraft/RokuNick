@@ -21,6 +21,11 @@ public class RokuNick {
     }
 
     public String getRoleplayName(OfflinePlayer player) {
-        return chat.getPlayerInfoString(null, player, RP_NAME_KEY, null);
+        String roleplayName = chat.getPlayerInfoString(null, player, RP_NAME_KEY, null);
+        if (roleplayName != null) {
+            return roleplayName;
+        }
+        // TODO: Return display name if user doesn't have roleplay name
+        return player.getName();
     }
 }
