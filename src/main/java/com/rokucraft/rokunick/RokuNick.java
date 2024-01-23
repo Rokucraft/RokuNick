@@ -17,7 +17,7 @@ public class RokuNick {
     }
 
     public void setRoleplayName(OfflinePlayer player, String name) {
-        chat.getPlayerInfoString(null, player, RP_NAME_KEY, name);
+        chat.setPlayerInfoString(null, player, RP_NAME_KEY, name);
     }
 
     public String getRoleplayName(OfflinePlayer player) {
