@@ -1,8 +1,0 @@
-name: RokuNick
-version: 1.0.0
-main: com.rokucraft.rokunick.RokuNickPlugin
-author: Aikovdp
-website: https://rokucraft.com
-api-version: '1.19'
-depend: [Vault]
-softdepend: [PlaceholderAPI]
