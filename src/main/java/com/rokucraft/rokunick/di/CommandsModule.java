@@ -9,6 +9,8 @@ import com.rokucraft.rokunick.RokuNickPlugin;
 import dagger.Module;
 import dagger.Provides;
 import dagger.multibindings.IntoSet;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -36,6 +38,12 @@ public class CommandsModule {
                     final Player player = ctx.sender();
                     final String name = ctx.get("name");
                     rokuNick.setRoleplayName(player, name);
+                    player.sendMessage(
+                            Component.text()
+                                    .append(Component.text("Your roleplay name is now", NamedTextColor.GREEN))
+                                    .append(Component.space())
+                                    .append(Component.text(name))
+                    );
                 }).build();
     }
 }
