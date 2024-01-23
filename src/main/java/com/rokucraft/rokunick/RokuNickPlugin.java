@@ -1,7 +1,10 @@
 package com.rokucraft.rokunick;
 
+import cloud.commandframework.CommandManager;
 import com.rokucraft.rokunick.di.DaggerRokuNickComponent;
+import com.rokucraft.rokunick.di.RokuNickComponent;
 import com.rokucraft.rokunick.papi.RokuNickPapiExpansion;
+import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class RokuNickPlugin extends JavaPlugin {
@@ -10,10 +13,13 @@ public class RokuNickPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         super.onEnable();
-        this.rokuNick = DaggerRokuNickComponent.builder()
+        RokuNickComponent component = DaggerRokuNickComponent.builder()
                 .plugin(this)
-                .build()
-                .rokuNick();
+                .build();
+        this.rokuNick = component.rokuNick();
+
+        CommandManager<CommandSender> manager = component.commandManager();
+        component.commands().forEach(manager::command);
 
         registerPapi();
     }
