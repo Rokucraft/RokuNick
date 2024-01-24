@@ -33,6 +33,7 @@ public class CommandsModule {
     ) {
         return manager.commandBuilder("rpname")
                 .required("name", stringParser())
+                .permission("rokunick.command.setname.roleplay")
                 .senderType(Player.class)
                 .handler(ctx -> {
                     final Player player = ctx.sender();
