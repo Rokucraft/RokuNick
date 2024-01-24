@@ -1,7 +1,9 @@
 package com.rokucraft.rokunick;
 
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import net.milkbowl.vault.chat.Chat;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.entity.Player;
 
 import javax.inject.Inject;
 
@@ -25,7 +27,13 @@ public class RokuNick {
         if (roleplayName != null) {
             return roleplayName;
         }
-        // TODO: Return display name if user doesn't have roleplay name
+
+        Player onlinePlayer = player.getPlayer();
+        if (onlinePlayer != null) {
+            return LegacyComponentSerializer.legacySection()
+                    .serialize(onlinePlayer.displayName());
+        }
+
         return player.getName();
     }
 }
