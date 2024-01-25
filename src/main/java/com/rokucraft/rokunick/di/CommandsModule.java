@@ -4,6 +4,7 @@ import cloud.commandframework.Command;
 import cloud.commandframework.CommandManager;
 import cloud.commandframework.execution.ExecutionCoordinator;
 import cloud.commandframework.paper.PaperCommandManager;
+import com.rokucraft.rokunick.Permissions;
 import com.rokucraft.rokunick.RokuNick;
 import com.rokucraft.rokunick.RokuNickPlugin;
 import dagger.Module;
@@ -33,7 +34,7 @@ public class CommandsModule {
     ) {
         return manager.commandBuilder("rpname")
                 .required("name", stringParser())
-                .permission("rokunick.command.setname.roleplay")
+                .permission(Permissions.COMMAND_SETNAME_ROLEPLAY)
                 .senderType(Player.class)
                 .handler(ctx -> {
                     final Player player = ctx.sender();
