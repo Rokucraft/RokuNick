@@ -3,7 +3,9 @@ package com.rokucraft.rokunick.papi;
 import com.rokucraft.rokunick.RokuNick;
 import com.rokucraft.rokunick.RokuNickPlugin;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -42,10 +44,25 @@ public class RokuNickPapiExpansion extends PlaceholderExpansion {
     }
 
     @Override
-    public @Nullable String onRequest(OfflinePlayer player, @NotNull String params) {
+    public @Nullable String onRequest(OfflinePlayer offlinePlayer, @NotNull String params) {
+        Player player = offlinePlayer.getPlayer();
+        // Don't parse for offline players
+        if (player == null) {
+            return null;
+        }
+
         if (params.equalsIgnoreCase("name_roleplay")) {
-            return rokuNick.getRoleplayName(player);
+            return getRoleplayNameOrFallback(player);
         }
         return null;
+    }
+
+    private String getRoleplayNameOrFallback(Player player) {
+        String roleplayName = rokuNick.getRoleplayName(player);
+        if (player.hasPermission("rokunick.name.roleplay") && roleplayName != null) {
+            return roleplayName;
+        }
+        return LegacyComponentSerializer.legacySection()
+                .serialize(player.displayName());
     }
 }

@@ -23,17 +23,6 @@ public class RokuNick {
     }
 
     public String getRoleplayName(OfflinePlayer player) {
-        String roleplayName = chat.getPlayerInfoString(null, player, RP_NAME_KEY, null);
-        if (roleplayName != null) {
-            return roleplayName;
-        }
-
-        Player onlinePlayer = player.getPlayer();
-        if (onlinePlayer != null) {
-            return LegacyComponentSerializer.legacySection()
-                    .serialize(onlinePlayer.displayName());
-        }
-
-        return player.getName();
+        return chat.getPlayerInfoString(null, player, RP_NAME_KEY, null);
     }
 }
