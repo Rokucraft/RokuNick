@@ -2,8 +2,6 @@ package com.rokucraft.rokunick.commands;
 
 import com.rokucraft.rokunick.Permissions;
 import com.rokucraft.rokunick.RokuNick;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.checkerframework.checker.nullness.qual.NonNull;
@@ -13,6 +11,10 @@ import org.incendo.cloud.bean.CommandProperties;
 import org.incendo.cloud.context.CommandContext;
 
 import javax.inject.Inject;
+
+import static net.kyori.adventure.text.Component.space;
+import static net.kyori.adventure.text.Component.text;
+import static net.kyori.adventure.text.format.NamedTextColor.GREEN;
 
 public class RoleplayNameCommand extends CommandBean<CommandSender> {
 
@@ -42,11 +44,10 @@ public class RoleplayNameCommand extends CommandBean<CommandSender> {
         final Player player = ctx.sender();
         final String name = ctx.get("name");
         rokuNick.setRoleplayName(player, name);
-        player.sendMessage(
-                Component.text()
-                        .append(Component.text("Your roleplay name is now", NamedTextColor.GREEN))
-                        .append(Component.space())
-                        .append(Component.text(name))
+        player.sendMessage(text()
+                .append(text("Your roleplay name is now", GREEN))
+                .append(space())
+                .append(text(name))
         );
     }
 }
