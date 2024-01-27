@@ -15,6 +15,7 @@ import javax.inject.Inject;
 import static net.kyori.adventure.text.Component.space;
 import static net.kyori.adventure.text.Component.text;
 import static net.kyori.adventure.text.format.NamedTextColor.GREEN;
+import static org.incendo.cloud.parser.standard.StringParser.stringParser;
 
 public class RoleplayNameCommand extends CommandBean<CommandSender> {
 
@@ -35,6 +36,7 @@ public class RoleplayNameCommand extends CommandBean<CommandSender> {
     @Override
     protected Command.Builder<? extends CommandSender> configure(Command.Builder<CommandSender> builder) {
         return builder
+                .required("name", stringParser())
                 .permission(Permissions.COMMAND_SETNAME_ROLEPLAY)
                 .senderType(Player.class)
                 .handler(this::handle);
