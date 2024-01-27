@@ -5,8 +5,8 @@ import com.rokucraft.rokunick.RokuNickPlugin;
 import dagger.BindsInstance;
 import dagger.Component;
 import org.bukkit.command.CommandSender;
-import org.incendo.cloud.Command;
 import org.incendo.cloud.CommandManager;
+import org.incendo.cloud.bean.CommandBean;
 
 import java.util.Set;
 
@@ -15,7 +15,7 @@ public interface RokuNickComponent {
     RokuNick rokuNick();
 
     CommandManager<CommandSender> commandManager();
-    Set<Command<? extends CommandSender>> commands();
+    Set<CommandBean<CommandSender>> commands();
 
     @Component.Builder
     interface Builder {

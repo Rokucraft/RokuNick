@@ -1,51 +1,27 @@
 package com.rokucraft.rokunick.di;
 
-import com.rokucraft.rokunick.Permissions;
-import com.rokucraft.rokunick.RokuNick;
 import com.rokucraft.rokunick.RokuNickPlugin;
+import com.rokucraft.rokunick.commands.RoleplayNameCommand;
+import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
 import dagger.multibindings.IntoSet;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-import org.incendo.cloud.Command;
 import org.incendo.cloud.CommandManager;
+import org.incendo.cloud.bean.CommandBean;
 import org.incendo.cloud.execution.ExecutionCoordinator;
 import org.incendo.cloud.paper.PaperCommandManager;
 
-import static org.incendo.cloud.parser.standard.StringParser.stringParser;
-
 @Module
-public class CommandsModule {
+public abstract class CommandsModule {
     @Provides
-    public CommandManager<CommandSender> provideCommandManager(RokuNickPlugin plugin) {
+    static CommandManager<CommandSender> provideCommandManager(RokuNickPlugin plugin) {
         var manager = PaperCommandManager.createNative(plugin, ExecutionCoordinator.simpleCoordinator());
         manager.registerBrigadier();
         return manager;
     }
 
-    @Provides
+    @Binds
     @IntoSet
-    public Command<? extends CommandSender> roleplayNameCommand(
-            CommandManager<CommandSender> manager,
-            RokuNick rokuNick
-    ) {
-        return manager.commandBuilder("rpname")
-                .required("name", stringParser())
-                .permission(Permissions.COMMAND_SETNAME_ROLEPLAY)
-                .senderType(Player.class)
-                .handler(ctx -> {
-                    final Player player = ctx.sender();
-                    final String name = ctx.get("name");
-                    rokuNick.setRoleplayName(player, name);
-                    player.sendMessage(
-                            Component.text()
-                                    .append(Component.text("Your roleplay name is now", NamedTextColor.GREEN))
-                                    .append(Component.space())
-                                    .append(Component.text(name))
-                    );
-                }).build();
-    }
+    abstract CommandBean<CommandSender> roleplayNameCommand(RoleplayNameCommand command);
 }
