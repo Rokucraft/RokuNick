@@ -1,12 +1,12 @@
 package com.rokucraft.rokunick.di;
 
-import cloud.commandframework.Command;
-import cloud.commandframework.CommandManager;
 import com.rokucraft.rokunick.RokuNick;
 import com.rokucraft.rokunick.RokuNickPlugin;
 import dagger.BindsInstance;
 import dagger.Component;
 import org.bukkit.command.CommandSender;
+import org.incendo.cloud.Command;
+import org.incendo.cloud.CommandManager;
 
 import java.util.Set;
 

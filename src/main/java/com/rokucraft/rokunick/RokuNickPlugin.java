@@ -1,11 +1,11 @@
 package com.rokucraft.rokunick;
 
-import cloud.commandframework.CommandManager;
 import com.rokucraft.rokunick.di.DaggerRokuNickComponent;
 import com.rokucraft.rokunick.di.RokuNickComponent;
 import com.rokucraft.rokunick.papi.RokuNickPapiExpansion;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.incendo.cloud.CommandManager;
 
 public class RokuNickPlugin extends JavaPlugin {
     private RokuNick rokuNick;

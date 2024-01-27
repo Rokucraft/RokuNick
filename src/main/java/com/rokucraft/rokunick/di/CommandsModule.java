@@ -1,9 +1,5 @@
 package com.rokucraft.rokunick.di;
 
-import cloud.commandframework.Command;
-import cloud.commandframework.CommandManager;
-import cloud.commandframework.execution.ExecutionCoordinator;
-import cloud.commandframework.paper.PaperCommandManager;
 import com.rokucraft.rokunick.Permissions;
 import com.rokucraft.rokunick.RokuNick;
 import com.rokucraft.rokunick.RokuNickPlugin;
@@ -14,8 +10,12 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.incendo.cloud.Command;
+import org.incendo.cloud.CommandManager;
+import org.incendo.cloud.execution.ExecutionCoordinator;
+import org.incendo.cloud.paper.PaperCommandManager;
 
-import static cloud.commandframework.arguments.standard.StringParser.stringParser;
+import static org.incendo.cloud.parser.standard.StringParser.stringParser;
 
 @Module
 public class CommandsModule {

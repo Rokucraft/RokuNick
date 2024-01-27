@@ -20,7 +20,7 @@ dependencies {
     compileOnly("com.github.MilkBowl:VaultAPI:1.7")
     compileOnly("me.clip:placeholderapi:2.11.5")
 
-    implementation("cloud.commandframework:cloud-paper:2.0.0-SNAPSHOT")
+    implementation("org.incendo:cloud-paper:2.0.0-beta.1")
 
     library("com.google.dagger:dagger:2.50")
     annotationProcessor("com.google.dagger:dagger-compiler:2.50")
