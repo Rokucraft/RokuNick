@@ -48,8 +48,8 @@ tasks {
     shadowJar {
         archiveClassifier = ""
         listOf(
-            "cloud.commandframework",
-            "io.leangen"
+            "org.incendo.cloud",
+            "io.leangen.geantyref"
         ).forEach { relocate(it, "${rootProject.group}.${rootProject.name}.lib.$it") }
     }
 
