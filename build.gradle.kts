@@ -21,6 +21,7 @@ dependencies {
     compileOnly("me.clip:placeholderapi:2.11.5")
 
     implementation("org.incendo:cloud-paper:2.0.0-beta.1")
+    implementation("org.incendo:cloud-processors-cooldown:1.0.0-beta.1")
 
     library("com.google.dagger:dagger:2.50")
     annotationProcessor("com.google.dagger:dagger-compiler:2.50")

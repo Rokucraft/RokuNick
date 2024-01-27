@@ -9,8 +9,11 @@ import org.incendo.cloud.Command;
 import org.incendo.cloud.bean.CommandBean;
 import org.incendo.cloud.bean.CommandProperties;
 import org.incendo.cloud.context.CommandContext;
+import org.incendo.cloud.processors.cooldown.Cooldown;
+import org.incendo.cloud.processors.cooldown.DurationFunction;
 
 import javax.inject.Inject;
+import java.time.Duration;
 
 import static net.kyori.adventure.text.Component.space;
 import static net.kyori.adventure.text.Component.text;
@@ -39,7 +42,8 @@ public class RoleplayNameCommand extends CommandBean<CommandSender> {
                 .required("name", stringParser())
                 .permission(Permissions.COMMAND_SETNAME_ROLEPLAY)
                 .senderType(Player.class)
-                .handler(this::handle);
+                .handler(this::handle)
+                .apply(Cooldown.of(DurationFunction.constant(Duration.ofSeconds(30))));
     }
 
     public void handle(@NonNull CommandContext<Player> ctx) {
