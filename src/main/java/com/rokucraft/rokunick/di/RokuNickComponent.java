@@ -10,7 +10,7 @@ import org.incendo.cloud.bean.CommandBean;
 
 import java.util.Set;
 
-@Component(modules = {CommandsModule.class, VaultModule.class})
+@Component(modules = {CommandsModule.class, VaultModule.class, DataModule.class})
 public interface RokuNickComponent {
     NameManager nameManager();
 
