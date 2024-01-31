@@ -1,6 +1,6 @@
 package com.rokucraft.rokunick.di;
 
-import com.rokucraft.rokunick.RokuNick;
+import com.rokucraft.rokunick.NameManager;
 import com.rokucraft.rokunick.RokuNickPlugin;
 import dagger.BindsInstance;
 import dagger.Component;
@@ -12,7 +12,7 @@ import java.util.Set;
 
 @Component(modules = {CommandsModule.class, VaultModule.class})
 public interface RokuNickComponent {
-    RokuNick rokuNick();
+    NameManager nameManager();
 
     CommandManager<CommandSender> commandManager();
     Set<CommandBean<CommandSender>> commands();

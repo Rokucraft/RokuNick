@@ -6,12 +6,12 @@ import org.bukkit.OfflinePlayer;
 
 import javax.inject.Inject;
 
-public class RokuNick {
+public class NameManager {
     public static final String RP_NAME_KEY = "rp_name";
     private final Chat chat;
 
     @Inject
-    public RokuNick(
+    public NameManager(
             Chat chat
     ) {
         this.chat = chat;

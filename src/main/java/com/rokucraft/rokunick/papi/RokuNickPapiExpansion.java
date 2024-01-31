@@ -1,7 +1,7 @@
 package com.rokucraft.rokunick.papi;
 
+import com.rokucraft.rokunick.NameManager;
 import com.rokucraft.rokunick.Permissions;
-import com.rokucraft.rokunick.RokuNick;
 import com.rokucraft.rokunick.RokuNickPlugin;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
@@ -14,12 +14,12 @@ import javax.inject.Inject;
 
 public class RokuNickPapiExpansion extends PlaceholderExpansion {
 
-    private final RokuNick rokuNick;
+    private final NameManager nameManager;
     private final RokuNickPlugin plugin;
 
     @Inject
-    public RokuNickPapiExpansion(RokuNick rokuNick, RokuNickPlugin plugin) {
-        this.rokuNick = rokuNick;
+    public RokuNickPapiExpansion(NameManager nameManager, RokuNickPlugin plugin) {
+        this.nameManager = nameManager;
         this.plugin = plugin;
     }
 
@@ -59,7 +59,7 @@ public class RokuNickPapiExpansion extends PlaceholderExpansion {
     }
 
     private String getRoleplayNameOrFallback(Player player) {
-        String roleplayName = rokuNick.getRoleplayName(player);
+        String roleplayName = nameManager.getRoleplayName(player);
         if (player.hasPermission(Permissions.NAME_ROLEPLAY) && roleplayName != null) {
             return roleplayName;
         }

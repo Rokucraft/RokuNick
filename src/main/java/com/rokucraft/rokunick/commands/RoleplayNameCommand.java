@@ -1,7 +1,7 @@
 package com.rokucraft.rokunick.commands;
 
+import com.rokucraft.rokunick.NameManager;
 import com.rokucraft.rokunick.Permissions;
-import com.rokucraft.rokunick.RokuNick;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.checkerframework.checker.nullness.qual.NonNull;
@@ -22,13 +22,13 @@ import static org.incendo.cloud.parser.standard.StringParser.stringParser;
 
 public class RoleplayNameCommand extends CommandBean<CommandSender> {
 
-    private final RokuNick rokuNick;
+    private final NameManager nameManager;
 
     @Inject
     public RoleplayNameCommand(
-            RokuNick rokuNick
+            NameManager nameManager
     ) {
-        this.rokuNick = rokuNick;
+        this.nameManager = nameManager;
     }
 
     @Override
@@ -49,7 +49,7 @@ public class RoleplayNameCommand extends CommandBean<CommandSender> {
     public void handle(@NonNull CommandContext<Player> ctx) {
         final Player player = ctx.sender();
         final String name = ctx.get("name");
-        rokuNick.setRoleplayName(player, name);
+        nameManager.setRoleplayName(player, name);
         player.sendMessage(text()
                 .append(text("Your roleplay name is now", GREEN))
                 .append(space())

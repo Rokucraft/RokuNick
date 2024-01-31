@@ -8,7 +8,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.incendo.cloud.CommandManager;
 
 public class RokuNickPlugin extends JavaPlugin {
-    private RokuNick rokuNick;
+    private NameManager nameManager;
 
     @Override
     public void onEnable() {
@@ -16,7 +16,7 @@ public class RokuNickPlugin extends JavaPlugin {
         RokuNickComponent component = DaggerRokuNickComponent.builder()
                 .plugin(this)
                 .build();
-        this.rokuNick = component.rokuNick();
+        this.nameManager = component.nameManager();
 
         CommandManager<CommandSender> manager = component.commandManager();
         component.commands().forEach(manager::command);
@@ -26,7 +26,7 @@ public class RokuNickPlugin extends JavaPlugin {
 
     private void registerPapi() {
         if(getServer().getPluginManager().getPlugin("PlaceholderAPI") != null) {
-            new RokuNickPapiExpansion(rokuNick, this).register();
+            new RokuNickPapiExpansion(nameManager, this).register();
         }
     }
 }
