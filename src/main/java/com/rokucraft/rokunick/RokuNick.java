@@ -1,5 +1,6 @@
 package com.rokucraft.rokunick;
 
+import com.rokucraft.rokunick.event.NameChangeEvent;
 import net.milkbowl.vault.chat.Chat;
 import org.bukkit.OfflinePlayer;
 
@@ -17,7 +18,9 @@ public class RokuNick {
     }
 
     public void setRoleplayName(OfflinePlayer player, String name) {
-        chat.setPlayerInfoString(null, player, RP_NAME_KEY, name);
+        NameChangeEvent event = new NameChangeEvent(player, "roleplay", name);
+        if (event.isCancelled()) return;
+        chat.setPlayerInfoString(null, event.getPlayer(), RP_NAME_KEY, event.getName());
     }
 
     public String getRoleplayName(OfflinePlayer player) {
