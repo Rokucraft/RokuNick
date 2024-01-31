@@ -1,5 +1,6 @@
 package com.rokucraft.rokunick.event;
 
+import net.kyori.adventure.text.Component;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
@@ -11,10 +12,10 @@ public class NameChangeEvent extends Event implements Cancellable {
     private static final HandlerList HANDLER_LIST = new HandlerList();
     private final OfflinePlayer player;
     private final String key;
-    private String name;
+    private Component name;
     private boolean cancelled;
 
-    public NameChangeEvent(OfflinePlayer player, String key, String name) {
+    public NameChangeEvent(OfflinePlayer player, String key, Component name) {
 
         this.player = player;
         this.key = key;
@@ -39,11 +40,11 @@ public class NameChangeEvent extends Event implements Cancellable {
         return key;
     }
 
-    public String getName() {
+    public Component getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Component name) {
         this.name = name;
     }
 

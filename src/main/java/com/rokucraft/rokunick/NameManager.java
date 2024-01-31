@@ -2,6 +2,7 @@ package com.rokucraft.rokunick;
 
 import com.rokucraft.rokunick.data.NameRepository;
 import com.rokucraft.rokunick.event.NameChangeEvent;
+import net.kyori.adventure.text.Component;
 import org.bukkit.OfflinePlayer;
 
 import javax.inject.Inject;
@@ -15,13 +16,13 @@ public class NameManager {
         this.nameRepository = nameRepository;
     }
 
-    public void setRoleplayName(OfflinePlayer player, String name) {
+    public void setRoleplayName(OfflinePlayer player, Component name) {
         NameChangeEvent event = new NameChangeEvent(player, RP_NAME_KEY, name);
         if (event.isCancelled()) return;
         nameRepository.setName(event.getPlayer(), event.getKey(), event.getName());
     }
 
-    public String getRoleplayName(OfflinePlayer player) {
+    public Component getRoleplayName(OfflinePlayer player) {
         return nameRepository.getName(player, RP_NAME_KEY);
     }
 }

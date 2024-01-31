@@ -4,6 +4,7 @@ import com.rokucraft.rokunick.NameManager;
 import com.rokucraft.rokunick.Permissions;
 import com.rokucraft.rokunick.RokuNickPlugin;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
+import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
@@ -16,6 +17,8 @@ public class RokuNickPapiExpansion extends PlaceholderExpansion {
 
     private final NameManager nameManager;
     private final RokuNickPlugin plugin;
+
+    private final LegacyComponentSerializer legacySerializer = LegacyComponentSerializer.legacySection();
 
     @Inject
     public RokuNickPapiExpansion(NameManager nameManager, RokuNickPlugin plugin) {
@@ -59,11 +62,10 @@ public class RokuNickPapiExpansion extends PlaceholderExpansion {
     }
 
     private String getRoleplayNameOrFallback(Player player) {
-        String roleplayName = nameManager.getRoleplayName(player);
+        Component roleplayName = nameManager.getRoleplayName(player);
         if (player.hasPermission(Permissions.NAME_ROLEPLAY) && roleplayName != null) {
-            return roleplayName;
+            return legacySerializer.serialize(roleplayName);
         }
-        return LegacyComponentSerializer.legacySection()
-                .serialize(player.displayName());
+        return legacySerializer.serialize(player.displayName());
     }
 }
