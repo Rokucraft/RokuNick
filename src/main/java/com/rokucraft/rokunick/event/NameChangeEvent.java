@@ -12,14 +12,15 @@ public class NameChangeEvent extends Event implements Cancellable {
     private static final HandlerList HANDLER_LIST = new HandlerList();
     private final OfflinePlayer player;
     private final String key;
-    private Component name;
+    private final Component oldName;
+    private Component newName;
     private boolean cancelled;
 
-    public NameChangeEvent(OfflinePlayer player, String key, Component name) {
-
+    public NameChangeEvent(OfflinePlayer player, String key, Component oldName, Component newName) {
         this.player = player;
         this.key = key;
-        this.name = name;
+        this.oldName = oldName;
+        this.newName = newName;
     }
 
     public static HandlerList getHandlerList() {
@@ -40,12 +41,16 @@ public class NameChangeEvent extends Event implements Cancellable {
         return key;
     }
 
-    public Component getName() {
-        return name;
+    public Component getOldName() {
+        return oldName;
     }
 
-    public void setName(Component name) {
-        this.name = name;
+    public Component getNewName() {
+        return newName;
+    }
+
+    public void setNewName(Component newName) {
+        this.newName = newName;
     }
 
     @Override

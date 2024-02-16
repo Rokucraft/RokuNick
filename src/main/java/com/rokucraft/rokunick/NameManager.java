@@ -16,10 +16,11 @@ public class NameManager {
         this.nameRepository = nameRepository;
     }
 
-    public void setRoleplayName(OfflinePlayer player, Component name) {
-        NameChangeEvent event = new NameChangeEvent(player, RP_NAME_KEY, name);
+    public void setRoleplayName(OfflinePlayer player, Component newName) {
+        Component oldName = nameRepository.getName(player, RP_NAME_KEY);
+        NameChangeEvent event = new NameChangeEvent(player, RP_NAME_KEY, oldName, newName);
         if (event.isCancelled()) return;
-        nameRepository.setName(event.getPlayer(), event.getKey(), event.getName());
+        nameRepository.setName(event.getPlayer(), event.getKey(), event.getNewName());
     }
 
     public Component getRoleplayName(OfflinePlayer player) {
