@@ -22,6 +22,7 @@ public class NameManager {
     public void setRoleplayName(OfflinePlayer player, @Nullable Component newName) {
         Component oldName = nameRepository.getName(player, RP_NAME_KEY);
         NameChangeEvent event = new NameChangeEvent(player, RP_NAME_KEY, oldName, newName);
+        event.callEvent();
         if (event.isCancelled()) return;
         nameRepository.setName(event.getPlayer(), event.getKey(), event.getNewName());
     }

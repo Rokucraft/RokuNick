@@ -23,6 +23,8 @@ dependencies {
     implementation("org.incendo:cloud-paper:2.0.0-beta.1")
     implementation("org.incendo:cloud-processors-cooldown:1.0.0-beta.1")
 
+    library("club.minnced:discord-webhooks:0.8.4")
+
     library("com.google.dagger:dagger:2.50")
     annotationProcessor("com.google.dagger:dagger-compiler:2.50")
 
