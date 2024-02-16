@@ -5,13 +5,13 @@ import com.rokucraft.rokunick.Permissions;
 import net.kyori.adventure.text.Component;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.incendo.cloud.Command;
 import org.incendo.cloud.bean.CommandBean;
 import org.incendo.cloud.bean.CommandProperties;
 import org.incendo.cloud.context.CommandContext;
 import org.incendo.cloud.processors.cooldown.Cooldown;
 import org.incendo.cloud.processors.cooldown.DurationFunction;
+import org.jspecify.annotations.NullMarked;
 
 import javax.inject.Inject;
 import java.time.Duration;
@@ -21,6 +21,7 @@ import static net.kyori.adventure.text.Component.text;
 import static net.kyori.adventure.text.format.NamedTextColor.GREEN;
 import static org.incendo.cloud.parser.standard.StringParser.stringParser;
 
+@NullMarked
 public class RoleplayNameCommand extends CommandBean<CommandSender> {
 
     private final NameManager nameManager;
@@ -33,7 +34,7 @@ public class RoleplayNameCommand extends CommandBean<CommandSender> {
     }
 
     @Override
-    protected @NonNull CommandProperties properties() {
+    protected CommandProperties properties() {
         return CommandProperties.of("rpname");
     }
 
@@ -47,7 +48,7 @@ public class RoleplayNameCommand extends CommandBean<CommandSender> {
                 .apply(Cooldown.of(DurationFunction.constant(Duration.ofSeconds(30))));
     }
 
-    public void handle(@NonNull CommandContext<Player> ctx) {
+    public void handle(CommandContext<Player> ctx) {
         final Player player = ctx.sender();
         final String name = ctx.get("name");
         nameManager.setRoleplayName(player, Component.text(name));

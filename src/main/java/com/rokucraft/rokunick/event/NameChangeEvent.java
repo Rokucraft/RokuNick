@@ -5,18 +5,20 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
-import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NullMarked;
+import org.jspecify.annotations.Nullable;
 
+@NullMarked
 public class NameChangeEvent extends Event implements Cancellable {
 
     private static final HandlerList HANDLER_LIST = new HandlerList();
     private final OfflinePlayer player;
     private final String key;
-    private final Component oldName;
-    private Component newName;
+    @Nullable private final Component oldName;
+    @Nullable private Component newName;
     private boolean cancelled;
 
-    public NameChangeEvent(OfflinePlayer player, String key, Component oldName, Component newName) {
+    public NameChangeEvent(OfflinePlayer player, String key, @Nullable Component oldName, @Nullable Component newName) {
         this.player = player;
         this.key = key;
         this.oldName = oldName;
@@ -28,7 +30,7 @@ public class NameChangeEvent extends Event implements Cancellable {
     }
 
     @Override
-    public @NotNull HandlerList getHandlers() {
+    public HandlerList getHandlers() {
         return HANDLER_LIST;
     }
 
@@ -41,11 +43,11 @@ public class NameChangeEvent extends Event implements Cancellable {
         return key;
     }
 
-    public Component getOldName() {
+    public @Nullable Component getOldName() {
         return oldName;
     }
 
-    public Component getNewName() {
+    public @Nullable Component getNewName() {
         return newName;
     }
 

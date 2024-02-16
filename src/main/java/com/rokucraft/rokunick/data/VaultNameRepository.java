@@ -4,9 +4,12 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.milkbowl.vault.chat.Chat;
 import org.bukkit.OfflinePlayer;
+import org.jspecify.annotations.NullMarked;
+import org.jspecify.annotations.Nullable;
 
 import javax.inject.Inject;
 
+@NullMarked
 public class VaultNameRepository implements NameRepository {
 
     private final Chat chat;
@@ -18,14 +21,14 @@ public class VaultNameRepository implements NameRepository {
     }
 
     @Override
-    public void setName(OfflinePlayer player, String key, Component name) {
-        chat.setPlayerInfoString(null, player, "name_" + key, miniMessage.serialize(name));
+    public void setName(OfflinePlayer player, String key, @Nullable Component name) {
+        chat.setPlayerInfoString(null, player, "name_" + key, name != null ? miniMessage.serialize(name) : null);
     }
 
     @Override
+    @Nullable
     public Component getName(OfflinePlayer player, String key) {
         String serialized = chat.getPlayerInfoString(null, player, "name_" + key, null);
-        if (serialized == null) return null;
-        return miniMessage.deserialize(serialized);
+        return (serialized != null) ? miniMessage.deserialize(serialized) : null;
     }
 }
