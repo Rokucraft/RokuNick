@@ -9,6 +9,8 @@ import org.incendo.cloud.Command;
 import org.incendo.cloud.bean.CommandBean;
 import org.incendo.cloud.bean.CommandProperties;
 import org.incendo.cloud.context.CommandContext;
+import org.incendo.cloud.description.CommandDescription;
+import org.incendo.cloud.description.Description;
 import org.incendo.cloud.processors.cooldown.Cooldown;
 import org.incendo.cloud.processors.cooldown.DurationFunction;
 import org.jspecify.annotations.NullMarked;
@@ -19,6 +21,7 @@ import java.time.Duration;
 import static net.kyori.adventure.text.Component.space;
 import static net.kyori.adventure.text.Component.text;
 import static net.kyori.adventure.text.format.NamedTextColor.GREEN;
+import static org.incendo.cloud.description.CommandDescription.commandDescription;
 import static org.incendo.cloud.parser.standard.StringParser.stringParser;
 
 @NullMarked
@@ -42,6 +45,7 @@ public class RoleplayNameCommand extends CommandBean<CommandSender> {
     protected Command.Builder<? extends CommandSender> configure(Command.Builder<CommandSender> builder) {
         return builder
                 .required("name", stringParser())
+                .commandDescription(commandDescription("Change your roleplay name"))
                 .permission(Permissions.COMMAND_SETNAME_ROLEPLAY)
                 .senderType(Player.class)
                 .handler(this::handle)
