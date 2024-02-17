@@ -1,5 +1,6 @@
 package com.rokucraft.rokunick.papi;
 
+import com.rokucraft.rokunick.NameKeys;
 import com.rokucraft.rokunick.NameManager;
 import com.rokucraft.rokunick.Permissions;
 import com.rokucraft.rokunick.RokuNickPlugin;
@@ -62,7 +63,7 @@ public class RokuNickPapiExpansion extends PlaceholderExpansion {
     }
 
     private String getRoleplayNameOrFallback(Player player) {
-        Component roleplayName = nameManager.getRoleplayName(player);
+        Component roleplayName = nameManager.getName(player, NameKeys.ROLEPLAY);
         if (player.hasPermission(Permissions.NAME_ROLEPLAY) && roleplayName != null) {
             return legacySerializer.serialize(roleplayName);
         }

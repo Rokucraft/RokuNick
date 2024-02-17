@@ -1,5 +1,6 @@
 package com.rokucraft.rokunick.commands;
 
+import com.rokucraft.rokunick.NameKeys;
 import com.rokucraft.rokunick.NameManager;
 import com.rokucraft.rokunick.Permissions;
 import net.kyori.adventure.text.Component;
@@ -9,8 +10,6 @@ import org.incendo.cloud.Command;
 import org.incendo.cloud.bean.CommandBean;
 import org.incendo.cloud.bean.CommandProperties;
 import org.incendo.cloud.context.CommandContext;
-import org.incendo.cloud.description.CommandDescription;
-import org.incendo.cloud.description.Description;
 import org.incendo.cloud.processors.cooldown.Cooldown;
 import org.incendo.cloud.processors.cooldown.DurationFunction;
 import org.jspecify.annotations.NullMarked;
@@ -55,7 +54,7 @@ public class RoleplayNameCommand extends CommandBean<CommandSender> {
     public void handle(CommandContext<Player> ctx) {
         final Player player = ctx.sender();
         final String name = ctx.get("name");
-        nameManager.setRoleplayName(player, Component.text(name));
+        nameManager.setName(player, NameKeys.ROLEPLAY, Component.text(name));
         player.sendMessage(text()
                 .append(text("Your roleplay name is now", GREEN))
                 .append(space())
