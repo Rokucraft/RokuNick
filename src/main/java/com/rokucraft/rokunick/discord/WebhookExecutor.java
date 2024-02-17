@@ -77,7 +77,7 @@ public class WebhookExecutor implements Listener {
     }
 
     private String avatarUrl(UUID uuid) {
-        return "https://crafatar.com/avatars/" + uuid + "?overlay";
+        return "https://crafthead.net/helm/" + uuid;
     }
 
     private String titleCase(String string) {
