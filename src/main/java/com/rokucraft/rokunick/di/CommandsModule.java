@@ -23,6 +23,7 @@ import java.util.concurrent.ScheduledExecutorService;
 
 import static net.kyori.adventure.text.Component.text;
 import static net.kyori.adventure.text.format.NamedTextColor.RED;
+import static org.incendo.cloud.processors.cooldown.CooldownManager.cooldownManager;
 
 @Module
 public abstract class CommandsModule {
@@ -46,7 +47,7 @@ public abstract class CommandsModule {
                         text("Please wait " + remaining.getSeconds() + " seconds before trying again.", RED)
                 );
 
-        return CooldownManager.of(
+        return cooldownManager(
                 CooldownConfiguration.<CommandSender>builder()
                         .repository(repository)
                         .addCreationListener(new ScheduledCleanupCreationListener<>(executorService, repository))

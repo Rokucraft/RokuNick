@@ -20,8 +20,8 @@ dependencies {
     compileOnly("com.github.MilkBowl:VaultAPI:1.7")
     compileOnly("me.clip:placeholderapi:2.11.5")
 
-    implementation("org.incendo:cloud-paper:2.0.0-beta.1")
-    implementation("org.incendo:cloud-processors-cooldown:1.0.0-beta.1")
+    implementation("org.incendo:cloud-paper:2.0.0-beta.2")
+    implementation("org.incendo:cloud-processors-cooldown:1.0.0-beta.2")
 
     library("club.minnced:discord-webhooks:0.8.4")
 
