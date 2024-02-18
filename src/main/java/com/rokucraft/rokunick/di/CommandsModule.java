@@ -1,6 +1,7 @@
 package com.rokucraft.rokunick.di;
 
 import com.rokucraft.rokunick.RokuNickPlugin;
+import com.rokucraft.rokunick.commands.RemoveRoleplayNameCommand;
 import com.rokucraft.rokunick.commands.RoleplayNameCommand;
 import dagger.Binds;
 import dagger.Module;
@@ -59,4 +60,8 @@ public abstract class CommandsModule {
     @Binds
     @IntoSet
     abstract CommandBean<CommandSender> roleplayNameCommand(RoleplayNameCommand command);
+
+    @Binds
+    @IntoSet
+    abstract CommandBean<CommandSender> removeRoleplayNameCommand(RemoveRoleplayNameCommand command);
 }
