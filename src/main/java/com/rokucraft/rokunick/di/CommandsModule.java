@@ -11,7 +11,7 @@ import org.bukkit.command.CommandSender;
 import org.incendo.cloud.CommandManager;
 import org.incendo.cloud.bean.CommandBean;
 import org.incendo.cloud.execution.ExecutionCoordinator;
-import org.incendo.cloud.paper.PaperCommandManager;
+import org.incendo.cloud.paper.LegacyPaperCommandManager;
 import org.incendo.cloud.processors.cooldown.CooldownConfiguration;
 import org.incendo.cloud.processors.cooldown.CooldownManager;
 import org.incendo.cloud.processors.cooldown.CooldownRepository;
@@ -33,7 +33,7 @@ public abstract class CommandsModule {
             RokuNickPlugin plugin,
             CooldownManager<CommandSender> cooldownManager
     ) {
-        var manager = PaperCommandManager.createNative(plugin, ExecutionCoordinator.simpleCoordinator());
+        var manager = LegacyPaperCommandManager.createNative(plugin, ExecutionCoordinator.simpleCoordinator());
         manager.registerBrigadier();
         manager.registerCommandPostProcessor(cooldownManager.createPostprocessor());
         return manager;
