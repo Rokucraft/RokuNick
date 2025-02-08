@@ -12,7 +12,7 @@ public class VaultModule {
     static Chat provideChat(RokuNickPlugin plugin) {
         RegisteredServiceProvider<Chat> rsp = plugin.getServer().getServicesManager().getRegistration(Chat.class);
         if (rsp == null) {
-            return  null;
+            throw new RuntimeException("Unable to find Vault Chat provider");
         }
         return rsp.getProvider();
     }
