@@ -17,18 +17,18 @@ repositories {
 
 dependencies {
     compileOnly("io.papermc.paper:paper-api:1.19.4-R0.1-SNAPSHOT")
-    compileOnly("com.github.MilkBowl:VaultAPI:1.7")
-    compileOnly("me.clip:placeholderapi:2.11.5")
+    compileOnly("com.github.MilkBowl:VaultAPI:1.7.1")
+    compileOnly("me.clip:placeholderapi:2.12.3")
 
     implementation("org.incendo:cloud-paper:2.0.1")
     implementation("org.incendo:cloud-processors-cooldown:1.0.0-rc.1")
 
     library("club.minnced:discord-webhooks:0.8.4")
 
-    library("com.google.dagger:dagger:2.50")
-    annotationProcessor("com.google.dagger:dagger-compiler:2.50")
+    library("com.google.dagger:dagger:2.60.1")
+    annotationProcessor("com.google.dagger:dagger-compiler:2.60.1")
 
-    implementation("org.jspecify:jspecify:0.3.0")
+    implementation("org.jspecify:jspecify:1.0.1")
 }
 
 java {
@@ -62,8 +62,8 @@ tasks {
         minecraftVersion("1.19.4")
         downloadPlugins {
             github("MilkBowl", "Vault", "1.7.3", "Vault.jar")
-            hangar("PlaceholderAPI", "2.11.5")
-            url("https://download.luckperms.net/1530/bukkit/loader/LuckPerms-Bukkit-5.4.117.jar")
+            hangar("PlaceholderAPI", "2.12.3")
+            modrinth("luckperms", "b0mk8uS6")
         }
     }
 }
